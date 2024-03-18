@@ -24,6 +24,7 @@ def callback():
 
 @handler1.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    counter=0
     text1=event.message.text
     response = openai.ChatCompletion.create(
         messages=[
@@ -37,6 +38,7 @@ def handle_message(event):
     except:
         ret = '發生錯誤！'
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=ret))
-
+    counter+=1
+    print(f"OpenAI 已傳送 {counter} 條訊息")
 if __name__ == '__main__':
     app.run()
