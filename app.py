@@ -27,11 +27,12 @@ def callback():
 def handle_message(event):
    global counter
     text1=event.message.text
-    ability={"職業":"老師","技能":"教導知識"}
+    ability={"職業":"老師",
+             "技能":"分析股票"}
     response = openai.ChatCompletion.create(
         messages=[
             {"role": "user", "content": text1},
-             {"role": "system", "content": "這是GPT的個性資料" +str(ability)}
+             {"role": "system", "content": "這是GPT的個性資訊" +str(ability)}
         ],
         model="gpt-3.5-turbo-0125",
         temperature = 0.5,
