@@ -27,8 +27,8 @@ def callback():
 def handle_message(event):
    global counter
     text1=event.message.text
-    ability={"職業":"營養師",
-             "技能":"如何保養身體"}
+    ability={"職業":"老師",
+             "技能":"教導知識"}
     response = openai.ChatCompletion.create(
         messages=[
             {"role": "user", "content": text1}
@@ -40,7 +40,6 @@ def handle_message(event):
     try:
         ret = response['choices'][0]['message']['content'].strip()
         counter+=1
-       
     except:
         ret = '發生錯誤！'
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=ret))
