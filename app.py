@@ -11,6 +11,7 @@ import os
 openai.api_key = os.getenv('OPENAI_API_KEY')
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
 handler1 = WebhookHandler(os.getenv('CHANNEL_SECRET'))
+counter=0
 
 @app.route('/callback', methods=['POST'])
 def callback():
@@ -24,11 +25,13 @@ def callback():
 
 @handler1.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    counter=0
+   global counter
     text1=event.message.text
+    ability={"職業":"老師","技能":"教導知識"}
     response = openai.ChatCompletion.create(
         messages=[
-            {"role": "user", "content": text1}
+            {"role": "user", "content": text1},
+             {"role": "system", "content": "這是GPT的個性資料" +str(ability)}
         ],
         model="gpt-3.5-turbo-0125",
         temperature = 0.5,
