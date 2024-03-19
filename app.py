@@ -32,7 +32,7 @@ def handle_message(event):
             }
     response = openai.ChatCompletion.create(
         messages=[
-            {"role": "user", "content": text1}
+            {"role": "user", "content": text1},
             {"role": "system", "content": "這是GPT的個性資訊" +str(ability)}
         ],
         model="gpt-3.5-turbo-0125",
