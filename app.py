@@ -40,10 +40,10 @@ def handle_message(event):
     try:
         ret = response['choices'][0]['message']['content'].strip()
         counter+=1
-        print(f"OpenAI 已傳送 {counter} 條訊息")
+       
     except:
         ret = '發生錯誤！'
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=ret))
-   
+    print(f"OpenAI 已傳送 {counter} 條訊息")
 if __name__ == '__main__':
     app.run()
