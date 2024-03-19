@@ -27,8 +27,8 @@ def callback():
 def handle_message(event):
    global counter
     text1=event.message.text
-    ability={"職業":"英文老師",
-             "技能":"教導英文文法與單字"}
+    ability={"職業":"營養師",
+             "技能":"如何保養身體"}
     response = openai.ChatCompletion.create(
         messages=[
             {"role": "user", "content": text1}
