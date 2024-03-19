@@ -27,6 +27,7 @@ def callback():
 def handle_message(event):
     global counter
     text1=event.message.text
+    #設計職業
     ability={"職業":"老師" ,
              "技能":"數學"
             }
@@ -40,11 +41,11 @@ def handle_message(event):
     )
     try:
         ret = response['choices'][0]['message']['content'].strip()
-        counter+=1
     except:
         ret = '發生錯誤！'
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=ret))
-    counter+=1
+    #計算訊息數
+    counter+=1 
     print(f"OpenAI 已傳送 {counter} 條訊息")
 if __name__ == '__main__':
     app.run()
