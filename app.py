@@ -25,7 +25,7 @@ def callback():
 
 @handler1.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-   global counter
+    global counter
     text1=event.message.text
     ability={"職業":"老師" ,
              "技能":"數學"
